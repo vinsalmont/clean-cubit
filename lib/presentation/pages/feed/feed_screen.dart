@@ -1,7 +1,7 @@
-import 'package:clean_cubit/cubit/feed/feed_cubit.dart';
-import 'package:clean_cubit/cubit/feed/feed_states.dart';
 import 'package:clean_cubit/data/repositories/feed_repository.dart';
 import 'package:clean_cubit/dependency_injection/dependency_injector.dart';
+import 'package:clean_cubit/domain/cubit/feed/feed_cubit.dart';
+import 'package:clean_cubit/domain/cubit/feed/feed_states.dart';
 import 'package:clean_cubit/presentation/router/arguments/favorites_arguments.dart';
 import 'package:clean_cubit/presentation/router/routes.dart';
 import 'package:clean_cubit/presentation/widgets/badge_icon_button.dart';

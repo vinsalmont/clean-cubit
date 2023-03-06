@@ -1,6 +1,6 @@
-import 'package:clean_cubit/cubit/feed/feed_cubit.dart';
-import 'package:clean_cubit/cubit/feed/feed_states.dart';
 import 'package:clean_cubit/data/repositories/feed_repository.dart';
+import 'package:clean_cubit/domain/cubit/feed/feed_cubit.dart';
+import 'package:clean_cubit/domain/cubit/feed/feed_states.dart';
 import 'package:clean_cubit/domain/entities/photo.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

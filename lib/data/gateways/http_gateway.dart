@@ -38,20 +38,41 @@ class _Response {
 typedef JSON = Map<String, dynamic>;
 typedef Headers = Map<String, String>;
 
+/// Represents an HTTP gateway interface.
 abstract class HttpGateway {
+  /// Sends a GET request to the specified [path] with the optional [queryParams]
+  /// and [headers], and returns the JSON response as a Future.
   Future<JSON> get({required String path, JSON? queryParams, Headers headers});
 
+  /// Sends a POST request to the specified [path] with the optional [queryParams],
+  /// [headers], and [body], and returns the JSON response as a Future.
   Future<JSON> post(
       {required String path, JSON? queryParams, Headers headers, JSON? body});
 
+  /// Sends a PATCH request to the specified [path] with the optional [queryParams],
+  /// [headers], and [body], and returns the JSON response as a Future.
   Future<JSON> patch(
       {required String path, JSON? queryParams, Headers headers, JSON? body});
 
+  /// Sends a DELETE request to the specified [path] with the optional [queryParams],
+  /// [headers], and [body], and returns the JSON response as a Future.
   Future<JSON> delete(
       {required String path, JSON? queryParams, Headers headers, JSON? body});
 }
 
+/// An implementation of the [HttpGateway] interface using the Dio package.
 class HttpGatewayImpl extends HttpGateway {
+  /// Creates a new [HttpGatewayImpl] instance with the specified [baseUrl],
+  /// [isDebug], [dioInstance], and [logger].
+  ///
+  /// The [baseUrl] should be the base URL of the HTTP API.
+  ///
+  /// The [isDebug] flag determines whether the gateway should log requests and
+  /// responses.
+  ///
+  /// The [dioInstance] parameter allows using a custom instance of the Dio client.
+  ///
+  /// The [logger] parameter allows using a custom instance of the logger.
   HttpGatewayImpl({
     required String baseUrl,
     required bool isDebug,
@@ -192,6 +213,14 @@ class HttpGatewayImpl extends HttpGateway {
     }
   }
 
+  /// Logs an HTTP request.
+  ///
+  /// If [_isDebug] is `false`, this function does nothing.
+  ///
+  /// [method] is the HTTP method used for the request.
+  /// [path] is the path of the request.
+  /// [headers] is an optional map of headers to include in the request.
+  /// [body] is an optional JSON object to include in the request body.
   void _logRequest(
       {required String method,
       required String path,
@@ -205,6 +234,13 @@ class HttpGatewayImpl extends HttpGateway {
         '[HTTP - $method] Request $_baseUrl$path\nHeaders: $headers\nBody:$body');
   }
 
+  /// Logs an HTTP response.
+  ///
+  /// If [_isDebug] is `false`, this function does nothing.
+  ///
+  /// [method] is the HTTP method used for the request.
+  /// [path] is the path of the request.
+  /// [response] is the HTTP response to log.
   void _logResponse(
       {required String method,
       required String path,
@@ -218,6 +254,13 @@ class HttpGatewayImpl extends HttpGateway {
     );
   }
 
+  /// Handles HTTP request exceptions.
+  ///
+  /// This function returns a corresponding [HttpRequestException] object based
+  /// on the given exception object. If the exception does not match any known
+  /// exception types, an unknown [HttpRequestException] is returned.
+  ///
+  /// [exception] is the exception to handle.
   Object _handleException(Object exception) {
     if (exception is dio.DioError &&
         exception.type == dio.DioErrorType.connectionTimeout) {

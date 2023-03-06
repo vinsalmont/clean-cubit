@@ -1,6 +1,7 @@
 import 'package:clean_cubit/domain/entities/photo.dart';
 import 'package:clean_cubit/domain/serializers/serializer.dart';
 
+/// Keys for the fields in the photo JSON
 class _Keys {
   static const albumId = 'albumId';
   static const id = 'id';
@@ -9,6 +10,7 @@ class _Keys {
   static const thumbnailUrl = 'thumbnailUrl';
 }
 
+/// A serializer for [Photo] entities
 class PhotoSerializer implements Serializer<Photo, Map<String, dynamic>> {
   @override
   Photo from(Map<String, dynamic> json) {
