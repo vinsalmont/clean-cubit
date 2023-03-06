@@ -71,15 +71,6 @@ abstract class BaseException extends Equatable implements Exception {
 enum ExceptionType {
   unexpected,
 
-  // InconsistentStateError
-  inconsistentState,
-  coordinatorInconsistentState,
-  serviceInconsistentState,
-  gatewayInconsistentState,
-  repositoryInconsistentState,
-  cubitInconsistentState,
-  layoutInconsistentState,
-
   // HTTP
   serverHttp,
   timeoutHttp,

@@ -1,6 +1,6 @@
 import 'package:clean_cubit/cubit/feed/feed_cubit.dart';
 import 'package:clean_cubit/cubit/feed/feed_states.dart';
-import 'package:clean_cubit/data/repository/feed_repository.dart';
+import 'package:clean_cubit/data/repositories/feed_repository.dart';
 import 'package:clean_cubit/domain/entities/photo.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -42,7 +42,7 @@ void main() {
     expect(feedCubit.state, equals(FeedState.initial()));
   });
 
-  group('loadFeed', () {
+  group('loadFeed() - ', () {
     test('emits FeedState with photos when loadFeed is successful', () {
       when(() => feedRepository.loadFeed()).thenAnswer(
         (_) => Future.value(photos),
@@ -61,7 +61,7 @@ void main() {
     });
   });
 
-  group('selectPhoto', () {
+  group('selectPhoto() - ', () {
     final photo = photos.first;
 
     test('adds photo to selectedPhotos', () {
@@ -71,7 +71,7 @@ void main() {
     });
   });
 
-  group('deselectPhoto', () {
+  group('deselectPhoto() - ', () {
     final photo = photos.first;
 
     test('removes photo from selectedPhotos', () {
@@ -82,7 +82,7 @@ void main() {
     });
   });
 
-  group('resetSelection', () {
+  group('resetSelection() - ', () {
     final photo = photos.first;
 
     test('resets selectedPhotos', () {
@@ -93,7 +93,7 @@ void main() {
     });
   });
 
-  group('isSelected', () {
+  group('isSelected() - ', () {
     final photo = photos.first;
 
     test('returns true when photo is selected', () {

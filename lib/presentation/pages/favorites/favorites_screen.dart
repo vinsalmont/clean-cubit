@@ -39,7 +39,8 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   Navigator.of(context).pushNamed(
                     photoDetail,
                     arguments: PhotoDetailArguments(
-                        photo: widget.arguments.photos[index]),
+                      photo: widget.arguments.photos[index],
+                    ),
                   );
                 },
                 child: Card(

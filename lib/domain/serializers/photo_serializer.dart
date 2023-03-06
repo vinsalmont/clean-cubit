@@ -12,7 +12,7 @@ class _Keys {
 class PhotoSerializer implements Serializer<Photo, Map<String, dynamic>> {
   @override
   Photo from(Map<String, dynamic> json) {
-    final albumId = json[_Keys.id] as int;
+    final albumId = json[_Keys.albumId] as int;
     final id = json[_Keys.id] as int;
     final title = json[_Keys.title] as String;
     final url = json[_Keys.url] as String;
