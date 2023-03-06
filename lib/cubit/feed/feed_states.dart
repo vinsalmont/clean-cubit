@@ -1,19 +1,17 @@
 import 'package:clean_cubit/domain/entities/photo.dart';
+import 'package:equatable/equatable.dart';
 
-class FeedState {
+class FeedState extends Equatable {
   const FeedState({
-    required this.isLoading,
     required this.feed,
     required this.selectedPhotos,
   });
 
   factory FeedState.initial() => const FeedState(
-        isLoading: true,
         feed: [],
         selectedPhotos: [],
       );
 
-  final bool isLoading;
   final List<Photo> feed;
   final List<Photo> selectedPhotos;
 
@@ -23,8 +21,10 @@ class FeedState {
     List<Photo>? selectedPhotos,
   }) =>
       FeedState(
-        isLoading: isLoading ?? this.isLoading,
         feed: feed ?? this.feed,
         selectedPhotos: selectedPhotos ?? this.selectedPhotos,
       );
+
+  @override
+  List<Object?> get props => [feed, selectedPhotos];
 }

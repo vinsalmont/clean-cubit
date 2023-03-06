@@ -15,7 +15,6 @@ class FeedCubit extends Cubit<FeedState> {
 
     emit(
       state.copyWith(
-        isLoading: false,
         feed: photos,
       ),
     );
